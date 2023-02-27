@@ -9,3 +9,5 @@ def solution(emergency):
 
 emergency = [3, 76, 24]
 print(solution(emergency))
+
+
