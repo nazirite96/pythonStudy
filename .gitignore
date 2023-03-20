@@ -6,7 +6,6 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-
-
+pythonStudy.iml
 ### VS Code ###
 .vscode/
