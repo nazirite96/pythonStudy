@@ -14,6 +14,6 @@ def solution(n,left,right):
                     num = j + 1 + (i - j)
                 answer.append(num)
     right  = right - left +1
-    return answer[left%n:left%n+right]
+    return answer[left % n:left % n + right]
 
 print(solution(3,2,5))
