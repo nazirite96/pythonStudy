@@ -1,16 +1,25 @@
 import itertools
 
-
 def solution(word):
-    answer = 0
     aeiou = ['A','E','I','O','U']
     list_aeiou = []
     for case in range(1,6):
-        for i in list(itertools.combinations_with_replacement(aeiou,case)):
-            list_aeiou.append(''.join(i))
+        list_aeiou.extend(list(map("".join, itertools.product(aeiou, repeat=case))))
     list_aeiou.sort()
-    print(list_aeiou)
+    return list_aeiou.index(word) + 1
 
-    return list_aeiou.index(word)+1
+print(solution('I'))
 
-print(solution('EIO'))
+
+#
+# from itertools import product
+# def solution(word):
+#     total_dict = []
+#     for i in range(1, 6):
+#         dictionary = list(map("".join, product(['A','E','I','O','U'], repeat = i)))
+#         total_dict.extend(dictionary)
+#     total_dict.sort()
+#     return total_dict.index(word)+1
+#
+#
+# print(solution('I'))
