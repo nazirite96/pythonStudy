@@ -1,6 +1,7 @@
 def solution(n):
-    answer = 0
-    return answer
+    a, b = 1, 1
+    for i in range(n):
+        a, b = b, (a+b) % 1000000007
+    return a
 
-
-print(solution(4))
+print(solution(34))
