@@ -1,27 +1,31 @@
-import collections
-import sys
-sys.setrecursionlimit(10000)
+from collections import deque
 
 
 def solution(x, y, n):
-    # 빈 v array 생성
-    v = [0] * 1000001
-    # 초기값 설정
-    v[x] = 1
-    q = collections.deque()
+    dist = [0] * 1000001
+
+    q = deque()
+    dist[x] = 1
     q.append(x)
-
     while q:
-        cur = q.popleft()
-        # 목적지와 같다면 리턴
-        if cur == y:
-            return v[y] - 1
-        for num in (cur+n, cur*2, cur*3):
-            if 0 <= num <= 1000000 and v[num] == 0:
-                q.append(num)
-                # 액션 카운트 +1
-                v[num] = v[cur] + 1
+        x = q.popleft()
+        if x > y:
+            continue
+        if 0 <= x + n <= 1000000 and dist[x + n] == 0:
+            dist[x + n] = dist[x] + 1
+            q.append(x + n)
+        if 0 <= x * 2 <= 1000000 and dist[x * 2] == 0:
+            dist[x * 2] = dist[x] + 1
+            q.append(x * 2)
+        if 0 <= x * 3 <= 1000000 and dist[x * 3] == 0:
+            dist[x * 3] = dist[x] + 1
+            q.append(x * 3)
 
-    return -1
 
-print(solution(10, 140, 5))
+
+    return dist[y] - 1
+
+
+
+
+print(solution(2, 5, 4))
