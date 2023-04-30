@@ -12,7 +12,6 @@ def solution(sequence, k):
                 result = [left, right - 1]
             else:
                 result = result if result[1] - result[0] <= (right - 1) - left else [left, right - 1]
-
         partial_sum -= sequence[left]
 
     return result
