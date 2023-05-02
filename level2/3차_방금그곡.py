@@ -45,8 +45,9 @@ def solution(m, musicinfos):
     if len(answer_list) == 1:
         return answer_list[0]
     else:
-        playtimes = list(title_playtime.values())
+        playtimes = list(title_playtime.values());
         playtimes.sort(reverse=True)
+        print(playtimes)
         if playtimes[0] != playtimes[1]:
             for title in title_playtime.keys():
                 if title_playtime[title] == playtimes[0]:
@@ -62,6 +63,20 @@ def solution(m, musicinfos):
 
     return '(None)'
 
+
+m = "A#B"
+musicinfos = [
+    "12:00,12:05,First Song,C#D#A#B",
+    "12:10,12:13,Second Song,A#B",
+    "12:20,12:25,Third Song,A#BA#B"
+]
+result = solution(m, musicinfos)
+print(result)  # Expected output: "First Song"
+
+# m = "CDEFGAC"
+# musicinfos =  ["23:50,12:06,HELLO,CDEFGA"]
+# print(solution(m, musicinfos))
+
 # m = "CDEFGAC"
 # musicinfos =  ["12:00,12:06,HELLO,CDEFGA"]
 # print(solution(m, musicinfos))
@@ -75,10 +90,10 @@ def solution(m, musicinfos):
 #
 # print(solution(m, musicinfos))
 #
-m = "ABC"
-musicinfos = ["00:00,00:02,HEL3LO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF", "13:00,13:05,TEST,ABCDEG#"]
-
-print(solution(m, musicinfos))
+# m = "ABC"
+# musicinfos = ["00:00,00:02,HEL3LO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF", "13:00,13:05,TEST,ABCDEG#"]
+#
+# print(solution(m, musicinfos))
 #
 #
 # m = "ABC"
@@ -96,3 +111,76 @@ print(solution(m, musicinfos))
 #
 # print(solution(m, musicinfos))
 
+
+# Test case 1
+# m = "ABC"
+# musicinfos = ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]
+# assert solution(m, musicinfos) == "HELLO"
+#
+# # Test case 2
+# m = "CC#BCC#BCC#BCC#B"
+# musicinfos = ["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"]
+# assert solution(m, musicinfos) == "FOO"
+#
+# # Test case 3
+# m = "ABCDEFG"
+# musicinfos = ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]
+# assert solution(m, musicinfos) == "HELLO"
+#
+# # Test case 4
+# m = "C#DEFGABC#DEFGAB"
+# musicinfos = ["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"]
+# assert solution(m, musicinfos) == "HELLO"
+#
+# # Test case 5
+# m = "ABC"
+# musicinfos = ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF", "14:00,14:20,HI,ABC"]
+# assert solution(m, musicinfos) == "HI"
+#
+# # Test case 6
+# m = "ABC"
+# musicinfos = ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF", "14:00,14:20,HI,CDEFGABC"]
+# assert solution(m, musicinfos) == "HI"
+#
+# # Test case 7
+# m = "C#DEFGAB"
+# musicinfos = ["12:00,13:00,HELLO,C#DEFGABC#DEFGAB", "13:00,14:00,WORLD,ABCDEF"]
+# assert solution(m, musicinfos) == "HELLO"
+#
+# # Test case 8
+# m = "C#DEFGAB"
+# musicinfos = ["23:50,00:10,HELLO,C#DEFGABC#DEFGAB"]
+# assert solution(m, musicinfos) == "HELLO"
+#
+# # Test case 9
+# m = "ABC"
+# musicinfos = ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF", "14:00,14:20,HI,ABC"]
+# assert solution(m, musicinfos) == "HI"
+#
+# # Test case 10
+# m = "ABC"
+# musicinfos = []
+# assert solution(m, musicinfos) == "(None)"
+#
+# m = "FGABC"
+# musicinfos = [
+#     "12:00,12:14,Music1,FGABCGA",
+#     "13:00,13:05,Music2,ABCDEF",
+#     "16:00,16:04,Music3,FACGABE",
+#     "17:00,17:14,Music4,FGABC",
+#     "20:00,20:10,Music5,FACGABCG",
+#     "22:00,22:14,Music6,GFABCGAF"
+# ]
+# assert solution(m, musicinfos) == "Music1"
+
+# Test case
+m = "CC#BCC#BCC#BCC#B"
+musicinfos = [
+    "03:00,03:30,Music1,CC#B",
+    "04:00,04:30,Music2,CC#BCC#BCC#B",
+    "05:00,05:10,Music3,C#C#C#C#C#C#C#C#",
+    "06:00,06:12,Music4,C#C#C#C#C#C#C#C#B",
+    "07:00,07:15,Music5,C#C#C#C#C#C#C#C#BCC#BCC#B"
+]
+print()
+assert solution(m, musicinfos) == "Music2"
