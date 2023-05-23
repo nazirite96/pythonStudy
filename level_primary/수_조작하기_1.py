@@ -9,6 +9,7 @@ def solution(n, control):
             answer += 10
         elif command == 'a':
             answer -= 10
+    control.re
     return answer
 
 print(solution(0,'wsdawsdassw'))
