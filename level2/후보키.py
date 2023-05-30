@@ -1,38 +1,28 @@
-import collections
-import itertools
+def solution(relations):
+    answer = []
+    targets = [[i for i in range(len(relations[0]))]]
+    while targets:
+        check = 0
+        tmp = targets.pop(0)
+        for i in range(len(tmp)):
+            lst = []
+            for leng in range(len(relations)):
+                a = tmp.copy()
+                a.remove(tmp[i])
+                b = ''
+                for x in a:
+                    b += relations[leng][x]
+                lst.append(b)
+            if (len(set(lst)) == len(lst)) and (a not in targets):
+                targets.append(a)
+            elif (len(set(lst)) != len(lst)):
+                check +=1
+        if check ==len(tmp):
+            answer.append(tmp)
+    return len(answer)
 
 
-def solution(relation):
-    table = collections.defaultdict(list)
-    for row in relation:
-        for column,value in enumerate(row):
-            table[column].append(value)
-    keys_lenth = len(relation[0])
-    keys = table.keys()
-    hubo_keys = []
-    for kl in range(keys_lenth):
-        combinations_s = itertools.combinations(keys, kl)
-        for i in combinations_s:
-            now_key = ''.join([str(s_) for s_ in i])
-            check = False
-            for hubo_key in hubo_keys:
-                if hubo_key in now_key:
-                    check = True
-                    break
-            if check:
-                continue
-            s = set()
-            for row in relation:
-                make_key = ''
-                for i_ in i:
-                    make_key += row[i_]
-                s.add(make_key)
-            if len(s) == len(relation):
-                hubo_keys.append(''.join([str(s_) for s_ in i]))
-
-    return len(hubo_keys)
-
-
+relation = [['a','aa'],['aa','a'],['a','aa']]
 relation = [["100","ryan","music","2"],["200","apeach","math","2"],["300","tube","computer","3"],["400","con","computer","4"],["500","muzi","music","3"],["600","apeach","music","2"]]
 
 print(solution(relation))
