@@ -4,7 +4,6 @@ def solution(n):
     row = [True]*n
     r_dig = [True]*2*n
     l_dig = [True]*2*n
-
     def queen(r, remain):
         global answer
         if remain:
@@ -20,6 +19,4 @@ def solution(n):
     queen(0, list(range(n)))
 
     return answer
-
-
-print(solution(5))
+print(solution(4))
